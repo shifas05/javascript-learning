@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>number guessing game</title>
+	<style type="text/css">
+		p.success{
+			color: green;
+		}
+		p.error{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		Enter a guess: <input type="text" value=""> <button>submit guess</button>
+		<p id="status"></p>
+	</div>
+</body>
+<script type="text/javascript">
+
+	// var browserType = 'mozilla'
+	// console.log(browserType.indexOf('zilla'))
+	var myData = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+	var myArray = myData.split(',');
+	console.log(myArray.toString());
+	// pop() method removes last item
+	// console.log(myArray.length);
+	// var myNewString = myArray.join(',');
+	// console.log(myNewString);
+	let count = 0;
+	function setMessage(messEle, status)
+	{
+		if(messEle.contains('success') ||  messEle.contains('error'))
+		{
+			messEle.remove("success");
+			messEle.remove("error");
+			messEle.add(status);
+		}else{
+			messEle.add(status);
+		}
+	}
+	function getNumber()
+	{
+		if(count <= 10)
+		{
+			let messEle = document.getElementById("status").classList;
+			let guess = document.querySelector('input')
+			guess = guess.value
+			pattern = '^[1-9][0-9]?$|^100$'
+			if(!guess.match(pattern)){
+				let messageEle = document.querySelector('p')
+				messageEle.textContent = 'plz give number 1 to 100'
+				setMessage(messEle,'error')
+			}else{
+				let ele = document.createElement('span');
+				ele.textContent = guess+' '
+				document.body.appendChild(ele);
+				count++
+				numb = randomNumber()
+
+				console.log(messEle)
+				if(numb == guess)
+				{
+					let messageEle = document.querySelector('p')
+					messageEle.textContent = 'success'
+					setMessage(messEle,'success')
+
+				}else if(guess>85 && guess<95){
+					let messageEle = document.querySelector('p')
+					messageEle.textContent = 'you are close'
+					setMessage(messEle,'error')
+				}else{
+					let messageEle = document.querySelector('p')
+					messageEle.textContent = 'not close at all'
+					setMessage(messEle,'error')
+				}
+			}
+			
+
+		}else if(count > 10){
+			//new game start
+		}
+		else{
+
+		}
+		
+	}
+	function randomNumber()
+	{
+		return 90;
+	}
+	const button = document.querySelector('button')
+	button.addEventListener("click",getNumber)
+
+</script>
+</html>

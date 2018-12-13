@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js - 01</title>
+</head>
+<body>
+	<!-- <div class="p">Player 1: Chris</div> -->
+	 <button>Click me</button>
+	 <button>Click me</button>
+</body>
+<script type="text/javascript">
+	/*const para = document.querySelector('div.p')
+	para.addEventListener('click', updateName)
+	function updateName()
+	{
+		let name = prompt('enter a new name')
+		para.textContent = 'Player: '+name;
+	}*/
+
+	document.addEventListener("DOMContentLoaded", function() {
+		function createParagraph() {
+			let para = document.createElement('p');
+			para.textContent = 'You clicked the button!';
+			document.body.appendChild(para);
+		}
+
+		const buttons = document.querySelectorAll('button');
+
+		for(let i = 0; i < buttons.length ; i++) {
+			buttons[i].addEventListener('click', createParagraph);
+		}
+	});
+
+
+</script>
+</html>

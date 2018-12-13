@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="output">
+		<ul></ul>
+	</div>
+
+</body>
+<script type="text/javascript">
+var list = document.querySelector('.output ul');
+// console.log(list)
+var products = ['Underpants:6.99','Socks:5.99','T-shirt:14.99','Trousers:31.99','Shoes:23.99']
+var pdtName = []
+var pdtPrice = []
+var total = 0
+for(var i = 0; i < products.length; i++) 
+{
+ 	// console.log(products[i]) 
+ 	// console.log(products[i].indexOf(':'))
+ 	let colonOcc = products[i].indexOf(':')
+ 	let pdt = products[i]
+
+ 	
+ 	pdtName.push(pdt.slice(0,colonOcc))
+ 	pdtPrice.push(Number(pdt.slice(colonOcc+1)))
+ 	// console.log(Number(pdt.slice(colonOcc+1)))
+ 	total+=Number(pdt.slice(colonOcc+1))
+ 	// console.log(total)
+ 	// pdtPrice.push(pdt)
+ 	// numb 5
+ 	itemText = pdt.slice(0,colonOcc) +' - '+ pdt.slice(colonOcc+1)  ;
+ 	var listItem = document.createElement('li');
+  	listItem.textContent = itemText;
+  	list.appendChild(listItem);
+}
+// console.log(total)
+
+/* their code */
+
+// var list = document.querySelector('.output ul');
+// var totalBox = document.querySelector('.output p');
+// var total = 0;
+// list.innerHTML = '';
+// totalBox.textContent = '';
+
+// var products = ['Underpants:6.99',
+//  'Socks:5.99',
+//  'T-shirt:14.99',
+//  'Trousers:31.99',
+//  'Shoes:23.99'];
+
+// for(var i = 0; i < products.length; i++) {
+//  var subArray = products[i].split(':');
+//  var name = subArray[0];
+//  var price = Number(subArray[1]);
+//  total += price;
+//  itemText = name + ' — $' + price;
+
+//  var listItem = document.createElement('li');
+//  listItem.textContent = itemText;
+//  list.appendChild(listItem);
+// }
+
+// totalBox.textContent = 'Total: $' + total.toFixed(2);
+
+
+
+
+</script>
+</html>

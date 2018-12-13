@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	function Person(first, last, age, gender, interests) {
+
+		if(gender == 'Male'){
+			gender = 'He'
+		}else{
+			gender = 'She'
+		}
+
+		this.name = {
+			'first': first,
+			'last' : last
+		};
+		this.age = age;
+		this.gender = gender;
+		this.interests = interests;
+		this.bio = function() {
+			alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. '+this.gender+' likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+		};
+		this.greeting = function() {
+			alert('Hi! I\'m ' + this.name.first + '.');
+		};
+	}
+	var person1 = new Person('shifas','hassan',23,'Male',['football','cricket'])
+	// person1.bio()
+	// var person2 = new Person('emily','hart',22,'Female',['drawing','reading'])
+	// person2.bio()
+
+	//object creation - 2
+	
+	/*var person = new Object()
+	person.name = 'shifas'
+	person.gender = 'M'
+	person.interests = ['sports','history'] 
+	console.log(person)*/
+
+	//Using the create() method
+	
+	var person2 = Object.create(person1)
+	person2.name = 'emma'
+	person2.greeting = function(){ alert('hi shifas') }
+	person2.bestFriend = 'shifas'
+
+	// person1.bestFriend = 'emma'
+
+	/*which adds a new method to the constructor's prototype property: whole inheritance chain has updated dynamically, automatically making this new method available on all object instances derived from the constructor.You will rarely see properties defined on the prototype property, because they are not very flexible when defined like this*/
+	Person.prototype.farewell = function() {
+  		alert(this.name.first + ' has left the building. Bye for now!');
+	};
+
+	console.log(person1.farewell())
+
+	// console.log(person1.constructor.name)
+	// console.log(Object.getPrototypeOf(person1))
+	// console.log(person1.constructor)
+	// var person3 = new person1.constructor('Karen', 'Stephenson', 26, 'female', ['playing drums', 'mountain climbing']);
+	// console.log(person3.name.first)
+	// person3.age
+	// person3.bio()
+
+</script>
+</html>
